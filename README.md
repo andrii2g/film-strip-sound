@@ -36,4 +36,15 @@ The encoder uses `width = 32 + round(sample / 1024)`. The decoder uses
 pixel of width represents 1,024 PCM counts, and the untouched round trip
 differs by at most 512 counts per sample.
 
+## Verify
+
+```sh
+python -m unittest -v
+```
+
+The test runs both commands on the bundled tone. It checks the 512-count
+error bound, paints the 800 rows in an RGB copy of the track, and verifies
+that the decoded edit gives exactly 100 ms of digital silence with identical
+audio to the untouched decode outside the gap.
+
 [fiaf]: https://www.fiafnet.org/pages/E-Resources/Technical-Terms-Full-List.html
